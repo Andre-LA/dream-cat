@@ -246,6 +246,11 @@ namespace DreamCat
 
 		void OnTick()
 		{
+			if (GameManager.IsGameOver)
+			{
+				return;
+			}
+		
 			int loops = 0;
 			State startingState = _state;
 			do

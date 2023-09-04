@@ -22,7 +22,7 @@ namespace DreamCat
 
 		public void Disturb(float disturbance)
 		{
-			_sleepStatus -= disturbance;
+			_sleepStatus = Mathf.Clamp01(_sleepStatus - disturbance);
 			if (_sleepStatus <= 0f)
 			{
 				AwakeHuman();
@@ -32,6 +32,7 @@ namespace DreamCat
 		void AwakeHuman()
 		{
 			StopCoroutine(_recoveringCo);
+			GameManager.SetAsGameOver();
 		}
 
 		void Awake()
