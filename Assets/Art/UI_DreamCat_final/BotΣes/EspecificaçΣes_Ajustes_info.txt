@@ -1,0 +1,6 @@
+- Espaçamento de 32 entre um botão e outro;
+
+Localização espacial
+
+- alinhado a 24pt de distancia da borda direita da tela.
+- 82pt acima da borda inferior da tela

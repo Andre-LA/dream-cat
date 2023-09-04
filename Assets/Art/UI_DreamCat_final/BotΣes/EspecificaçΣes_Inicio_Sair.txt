@@ -1,0 +1,9 @@
+- Espaçamento de 32 entre um botão e outro;
+
+
+Texto: 
+
+
+- Titulo: Montserrat Extrabold, 32pt, 32pt de entrelinha.
+
+Cor: Roxo #171128

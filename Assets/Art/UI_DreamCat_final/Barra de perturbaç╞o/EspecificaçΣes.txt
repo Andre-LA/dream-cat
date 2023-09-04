@@ -1,0 +1,9 @@
+Você pode enconstar a barra bem rente entre o todo, e rente ao lado squerdo. Já deixei com os distanciamento adequado.
+
+Temos variações de cores conforme  barra regride e avança:
+
+- Semântica/Verde1 é o primeiro estagio de perturbação, quando está tudo correndo bem. O Verde 2 é quando você começa a ter queda de pontuação.
+
+- Semântica/Amarelo é um meio termo entre o verde2 e o vermelho1
+
+- O Semântica/Vermelho1 é o primeiro estagio de perigo extremo e o Vermelho2 é o ultimo.

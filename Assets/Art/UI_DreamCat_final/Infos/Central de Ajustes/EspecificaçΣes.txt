@@ -1,0 +1,9 @@
+- Espaçamento de 24 entre o icone e o texto;
+- 32 Borda com telação ao fundo;
+
+Texto: 
+
+Titulo: Montserrat Extrabold, 32pt, 40pt de entrelinha.
+Corpo do texto: Montserrat Medim, 24pt, 32pr de entrelinha.
+
+Cor: Preto #000000

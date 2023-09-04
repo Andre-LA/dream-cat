@@ -89,8 +89,8 @@ namespace DreamCat
 				out hit,
 				_attackingDirection,
 				1f,
-				LayerMask.GetMask("Default"),
-				QueryTriggerInteraction.Ignore
+				LayerMask.GetMask("SleepDisturber"),
+				QueryTriggerInteraction.Collide
 			);
 		}
 
@@ -138,6 +138,7 @@ namespace DreamCat
 			if (IsFirstTick)
 			{
 				_animator.SetFloat("MoveSpeed", 0f);
+				_rb.useGravity = false;
 			}
 
 			_rb.velocity = Vector3.zero;
@@ -165,6 +166,16 @@ namespace DreamCat
 				return State.Attacking;
 			}
 
+			if (!IsOnGround)
+			{
+				return State.Falling;
+			}
+
+			if (IsFirstTick)
+			{
+				_rb.useGravity = false;
+			}
+
 			ApplyMovementVelocity(moveAction);
 			TryAlignWithGround();
 
@@ -182,6 +193,7 @@ namespace DreamCat
 
 		State OnJump()
 		{
+			_rb.useGravity = true;
 			_rb.velocity = new Vector3(_rb.velocity.x, _jumpForce, _rb.velocity.z);
 			return State.Falling;
 		}
@@ -196,6 +208,7 @@ namespace DreamCat
 
 			if (IsFirstTick)
 			{
+				_rb.useGravity = true;
 				DisableCollision();
 			}
 
@@ -208,13 +221,13 @@ namespace DreamCat
 			if (IsFirstTick)
 			{
 				_rb.velocity = Vector3.zero;
+				_rb.useGravity = false;
 				bool isAttackingSomething = RaycastAttack(out RaycastHit hit);
-				Debug.Log($"Is attacking? {isAttackingSomething}");
 
 				if (isAttackingSomething)
 				{
 					var disturber = hit.transform.GetComponent<SleepDisturber>();
-					disturber.StopDisturbance();
+					disturber?.StopDisturbance();
 				}
 
 				_animator.Play("Attack");
@@ -223,6 +236,8 @@ namespace DreamCat
 			{
 				return State.Idle;
 			}
+
+			Debug.Log($"Preso?? {IsFirstTick}, {_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")}");
 
 			TryAlignWithGround();
 

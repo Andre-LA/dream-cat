@@ -15,15 +15,24 @@ namespace DreamCat
 		[SerializeField]
 		float _initialSilenceTime = 1f;
 
-		[Tooltip("How much seconds should the disturber wait to start disturbing again, one of the elements are choosen randomly")]
+		[Tooltip("Minimum interval to disturber start disturbing again")]
 		[SerializeField]
-		float[] _silenceDurations = new float[1];
+		float minWait = 4f;
+
+		[Tooltip("Maximum interval to disturber start disturbing again")]
+		[SerializeField]
+		float maxWait = 6f;
+
+		[Tooltip("If the sprite should be invisible when Off, set to true if this sleep disturber it's alongside with an 3D object")]
+		[SerializeField]
+		bool _shouldBeInvisibleWhenOff = false;
 
 		Coroutine _disturbanceCoroutine;
 
 		[Header("Components")]
 		[SerializeField]
 		Animator _animator;
+		SpriteRenderer _spriteRenderer;
 
 		[ContextMenu("Start Disturbance")]
 		void StartDisturbance()
@@ -31,6 +40,10 @@ namespace DreamCat
 			if (_disturbanceCoroutine == null)
 			{
 				_animator.SetBool("Is Disturbing", true);
+				if (_shouldBeInvisibleWhenOff)
+				{
+					_spriteRenderer.enabled = true;
+				}
 				_disturbanceCoroutine = StartCoroutine(Disturb());
 			}
 		}
@@ -41,6 +54,10 @@ namespace DreamCat
 			if (_disturbanceCoroutine != null)
 			{
 				_animator.SetBool("Is Disturbing", false);
+				if (_shouldBeInvisibleWhenOff)
+				{
+					_spriteRenderer.enabled = false;
+				}
 				StopCoroutine(_disturbanceCoroutine);
 				_disturbanceCoroutine = null;
 				StartCoroutine(SilenceThenDisturb());
@@ -49,8 +66,7 @@ namespace DreamCat
 
 		IEnumerator SilenceThenDisturb()
 		{
-			float silenceDuration = _silenceDurations[Random.Range(0, _silenceDurations.Length)];
-			Debug.Log($"silence duration: {silenceDuration}");
+			float silenceDuration = Random.Range(minWait, maxWait);
 			yield return new WaitForSeconds(silenceDuration);
 			StartDisturbance();
 		}
@@ -67,6 +83,11 @@ namespace DreamCat
 
 		IEnumerator Start()
 		{
+			_spriteRenderer = _animator.GetComponent<SpriteRenderer>();
+			if (_shouldBeInvisibleWhenOff)
+			{
+				_spriteRenderer.enabled = false;
+			}
 			yield return new WaitForSeconds(_initialSilenceTime);
 			StartDisturbance();
 		}

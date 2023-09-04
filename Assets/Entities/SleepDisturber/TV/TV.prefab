@@ -8,10 +8,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 828900749168206323, guid: 703a4567d34dd4b2cb168a3844372afd, type: 3}
+      propertyPath: m_Size.x
+      value: 3.963365
+      objectReference: {fileID: 0}
+    - target: {fileID: 828900749168206323, guid: 703a4567d34dd4b2cb168a3844372afd, type: 3}
+      propertyPath: m_Size.y
+      value: 4.0200095
+      objectReference: {fileID: 0}
+    - target: {fileID: 828900749168206323, guid: 703a4567d34dd4b2cb168a3844372afd, type: 3}
+      propertyPath: m_Size.z
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 828900749168206323, guid: 703a4567d34dd4b2cb168a3844372afd, type: 3}
+      propertyPath: m_Center.y
+      value: 0.99968505
+      objectReference: {fileID: 0}
+    - target: {fileID: 828900749168206323, guid: 703a4567d34dd4b2cb168a3844372afd, type: 3}
+      propertyPath: m_Center.z
+      value: 1.19
+      objectReference: {fileID: 0}
     - target: {fileID: 2763949031278085721, guid: 703a4567d34dd4b2cb168a3844372afd, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 43423089273549c0cafeabca586712ce, type: 2}
+    - target: {fileID: 3108729455688443993, guid: 703a4567d34dd4b2cb168a3844372afd, type: 3}
+      propertyPath: _shouldBeInvisibleWhenOff
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4535341250935014930, guid: 703a4567d34dd4b2cb168a3844372afd, type: 3}
       propertyPath: m_Size.x
       value: 4

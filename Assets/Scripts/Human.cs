@@ -14,6 +14,8 @@ namespace DreamCat
 		[SerializeField]
 		float _recoveryPerSecond = 0f;
 
+		Animator _animator;
+
 		public float SleepStatus => _sleepStatus;
 
 		Coroutine _recoveringCo;
@@ -34,7 +36,17 @@ namespace DreamCat
 
 		void Awake()
 		{
+			_animator = GetComponent<Animator>();
+		}
+
+		void Start()
+		{
 			_recoveringCo = StartCoroutine(Recover());
+		}
+
+		void Update()
+		{
+			_animator.SetFloat("Sleep Health", _sleepStatus);
 		}
 
 		IEnumerator Recover()
