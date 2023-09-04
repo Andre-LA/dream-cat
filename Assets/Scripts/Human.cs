@@ -14,6 +14,8 @@ namespace DreamCat
 		[SerializeField]
 		float _recoveryPerSecond = 0f;
 
+		public float SleepStatus => _sleepStatus;
+
 		Coroutine _recoveringCo;
 
 		public void Disturb(float disturbance)
